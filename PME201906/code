@@ -1,0 +1,15 @@
+# Autocorrelation script
+
+rvals=np.array(a)
+
+x=np.arange(1,10001)
+d=pd.Series(data=rvals, index=x)
+gmOfT= []
+varo=d.var()
+step=range(1,30)
+for w in step:
+    gmOfT.append((d.rolling(w).mean()).var()/varo)
+
+plt.scatter(step[1:-1],gmOfT[1:-1],marker=".")
+plt.show()
+plt.close()
